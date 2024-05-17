@@ -1,5 +1,9 @@
 spring:
   application:
     name: notification
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: myGroup
 server:
   port: 8082

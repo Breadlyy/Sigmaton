@@ -1,5 +1,7 @@
 spring:
   application:
     name: main-service
+    kafka:
+      bootstrap-servers: localhost:9092
 server:
   port: 8081
