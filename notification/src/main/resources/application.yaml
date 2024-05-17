@@ -1,4 +1,18 @@
 spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: juggeryurnero276@gmail.com
+    password: ghdp rkrl lxng kine
+    sender:
+      email: juggeryurnero276@gmail.com
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
   application:
     name: notification
   kafka:
