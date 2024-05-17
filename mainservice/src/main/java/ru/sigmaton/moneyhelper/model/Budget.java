@@ -33,18 +33,7 @@ public class Budget {
     @OneToMany(
             fetch = FetchType.EAGER,
             mappedBy = "budget",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true)
+            cascade = CascadeType.ALL)
     private List<Category> categories = new ArrayList<>();
-
-    public void addCategory(Category category) {
-        category.setBudget(this);
-        this.categories.add(category);
-    }
-
-    public void deleteCategory(Category category) {
-        category.setBudget(null);
-        this.categories.remove(category);
-    }
 
 }
