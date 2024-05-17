@@ -3,5 +3,15 @@ spring:
     name: main-service
     kafka:
       bootstrap-servers: localhost:9092
+  datasource:
+    url: jdbc:postgresql://localhost:5432/money_helper
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+  flyway:
+    enabled: false
 server:
   port: 8081
