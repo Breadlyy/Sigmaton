@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -34,6 +35,6 @@ public class Budget {
             mappedBy = "budget",
             cascade = CascadeType.ALL,
             orphanRemoval = true)
-    private List<Category> categories;
+    private List<Category> categories = new ArrayList<>();
 
 }

@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -30,6 +31,6 @@ public class Account {
             mappedBy = "account",
             orphanRemoval = true,
             cascade = CascadeType.ALL)
-    private List<Budget> budgets;
+    private List<Budget> budgets = new ArrayList<>();
 
 }
