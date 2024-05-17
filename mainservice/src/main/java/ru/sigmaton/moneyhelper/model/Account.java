@@ -28,7 +28,7 @@ public class Account implements UserDetails {
 
     private String email;
 
-    //    private Currency currency;
+
 
     @OneToMany(
             fetch = FetchType.EAGER,
