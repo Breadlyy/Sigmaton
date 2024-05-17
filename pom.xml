@@ -22,11 +22,11 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>17</java.version>
-		<spring.boot.maven.plugin.version>2.5.7</spring.boot.maven.plugin.version>
-		<spring.boot.dependencies.version>2.5.7</spring.boot.dependencies.version>
+		<spring.boot.maven.plugin.version>3.2.5</spring.boot.maven.plugin.version>
+		<spring.boot.dependencies.version>3.2.5</spring.boot.dependencies.version>
 		<spring-cloud.version>2020.0.3</spring-cloud.version>
-		<docker.username>yourdockerusername</docker.username>
-		<docker.image.name>sigma-api</docker.image.name>
+		<docker.username>shmvsky</docker.username>
+		<docker.image.name>money-helper</docker.image.name>
 		<docker.image.tag/>
 	</properties>
 
