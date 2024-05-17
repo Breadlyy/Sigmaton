@@ -1,10 +1,10 @@
-package ru.sigmaton;
+package ru.sigmaton.notification;
 
 /**
  * Hello world!
  *
  */
-public class App 
+public class NotificationApplication
 {
     public static void main( String[] args )
     {
