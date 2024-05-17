@@ -1,5 +1,9 @@
 spring:
   application:
     name: main-service
+  datasource:
+    url: jdbc:postgres://postgres.jqkdbfuocsgemgisnrlk:proscuf2281488@aws-0-eu-central-1.pooler.supabase.com:5432/postgres
+  flyway:
+    enabled: false
 server:
   port: 8081
