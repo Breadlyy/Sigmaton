@@ -2,7 +2,7 @@ spring:
   application:
     name: main-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/money_helper
+    url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: postgres
   jpa:

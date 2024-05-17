@@ -18,11 +18,7 @@ public class MainServiceApplication {
     @Bean
     CommandLineRunner commandLineRunner(AccountRepository accountRepository) {
         return args -> {
-            var account = new Account();
-            account.setLogin("abiba");
-            account.setPassword("228Nigger");
-            account.setEmail("gmail@biber.com");
-            accountRepository.save(account);
+
         };
     }
 
