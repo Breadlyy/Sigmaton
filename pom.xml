@@ -11,8 +11,12 @@
 	<groupId>ru.sigmaton</groupId>
 	<artifactId>money-helper</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
 	<name>money-helper</name>
 	<description>Demo project for Spring Boot</description>
+	<modules>
+		<module>mainservice</module>
+	</modules>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
