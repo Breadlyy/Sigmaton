@@ -33,4 +33,14 @@ public class Account {
             cascade = CascadeType.ALL)
     private List<Budget> budgets = new ArrayList<>();
 
+    public void addBudget(Budget budget) {
+        budget.setAccount(this);
+        this.budgets.add(budget);
+    }
+
+    public void deleteBudget(Budget budget) {
+        budget.setAccount(null);
+        this.budgets.remove(budget);
+    }
+
 }

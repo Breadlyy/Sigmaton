@@ -36,4 +36,14 @@ public class Category {
             cascade = CascadeType.ALL)
     private List<Transaction> transactions = new ArrayList<>();
 
+    public void addTransaction(Transaction transaction) {
+        transaction.setCategory(this);
+        this.transactions.add(transaction);
+    }
+
+    public void removeTransaction(Transaction transaction) {
+        transaction.setCategory(null);
+        this.transactions.remove(transaction);
+    }
+
 }

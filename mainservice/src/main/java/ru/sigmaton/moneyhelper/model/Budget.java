@@ -37,4 +37,14 @@ public class Budget {
             orphanRemoval = true)
     private List<Category> categories = new ArrayList<>();
 
+    public void addCategory(Category category) {
+        category.setBudget(this);
+        this.categories.add(category);
+    }
+
+    public void deleteCategory(Category category) {
+        category.setBudget(null);
+        this.categories.remove(category);
+    }
+
 }
