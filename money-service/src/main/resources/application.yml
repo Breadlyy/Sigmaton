@@ -1,5 +1,0 @@
-spring:
-  application:
-    name: money-service
-server:
-  port: 8081
