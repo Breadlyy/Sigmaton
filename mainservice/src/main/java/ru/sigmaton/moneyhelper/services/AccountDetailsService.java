@@ -11,7 +11,6 @@ import ru.sigmaton.moneyhelper.repository.AccountRepository;
 @RequiredArgsConstructor
 public class AccountDetailsService implements UserDetailsService {
 
-
     private final AccountRepository accountRepository;
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
