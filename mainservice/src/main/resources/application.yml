@@ -2,13 +2,17 @@ spring:
   application:
     name: main-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
+    password: password
+    url: jdbc:postgresql://localhost:5432/accounts
     username: postgres
-    password: postgres
   jpa:
-    hibernate:
-      ddl-auto: create
-    show-sql: true
+      hibernate:
+        ddl-auto: create-drop
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+          format_sql: true
+      show-sql: true
   flyway:
     enabled: false
 server:
