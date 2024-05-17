@@ -1,13 +1,13 @@
-package ru.sigmaton.moneyhelper;
+package ru.sigmaton.moneyservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MoneyHelperApplicationTests {
+class MoneyServiceApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }
