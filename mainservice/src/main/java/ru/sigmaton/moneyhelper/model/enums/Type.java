@@ -1,4 +1,4 @@
-package ru.sigmaton.moneyhelper.model;
+package ru.sigmaton.moneyhelper.model.enums;
 
 public enum Type {
     INCOME,
