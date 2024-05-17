@@ -16,6 +16,15 @@ public class Category {
     @GeneratedValue
     private Long id;
 
+    private String name;
+
+    @Enumerated(EnumType.ORDINAL)
+    private Type type;
+
+    private Long plan;
+
+    private Long real;
+
     @ManyToOne
     @JoinColumn(name = "budget_id")
     private Budget budget;

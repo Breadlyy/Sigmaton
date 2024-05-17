@@ -24,7 +24,7 @@ public class Budget {
 
     private LocalDate endDate;
 
-    private BigDecimal limit;
+    private Long amount;
 
     @ManyToOne
     @JoinColumn(name = "account_id")

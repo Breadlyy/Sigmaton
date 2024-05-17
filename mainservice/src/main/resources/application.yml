@@ -2,7 +2,13 @@ spring:
   application:
     name: main-service
   datasource:
-    url: jdbc:postgres://postgres.jqkdbfuocsgemgisnrlk:proscuf2281488@aws-0-eu-central-1.pooler.supabase.com:5432/postgres
+    url: jdbc:postgresql://localhost:5432/money_helper
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
   flyway:
     enabled: false
 server:
