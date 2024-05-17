@@ -1,6 +1,8 @@
 spring:
   application:
     name: main-service
+    kafka:
+      bootstrap-servers: localhost:9092
   datasource:
     password: password
     url: jdbc:postgresql://localhost:5432/accounts

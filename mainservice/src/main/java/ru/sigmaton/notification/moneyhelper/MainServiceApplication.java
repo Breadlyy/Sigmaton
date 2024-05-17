@@ -1,4 +1,4 @@
-package ru.sigmaton.moneyhelper;
+package ru.sigmaton.notification.moneyhelper;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
