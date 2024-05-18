@@ -41,5 +41,7 @@ public class TransactionService {
     }
 
     public Transaction createTransaction(Long categoryId, Transaction transaction, Principal principal) {
+        transaction.setCategory(categoryService.getCategory(categoryId, principal));
+        return transactionRepository.save(transaction);
     }
 }
