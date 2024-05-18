@@ -3,6 +3,7 @@ package ru.sigmaton.moneyhelper.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.sigmaton.moneyhelper.model.Budget;
+import ru.sigmaton.moneyhelper.model.BudgetRequest;
 import ru.sigmaton.moneyhelper.model.Category;
 import ru.sigmaton.moneyhelper.repository.BudgetRepository;
 
@@ -18,9 +19,11 @@ public class BudgetService {
         this.categoryService = categoryService;
     }
 
-    public void saveNewBudget(Budget budget, Category category) {
-        Budget savedBudget = budgetRepository.save(budget);
-        category.setBudget(savedBudget);
-        categoryService.save(category);
+    public Budget saveNewBudget(Budget budget) {
+        return budgetRepository.save(budget);
+    }
+
+    public Budget findById(Long budgetId) {
+        return budgetRepository.findById(budgetId).get();
     }
 }
