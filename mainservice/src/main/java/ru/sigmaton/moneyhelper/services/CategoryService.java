@@ -47,7 +47,7 @@ public class CategoryService {
         return categoryRepository.save(category);
     }
 
-    public Category deleteCategory(Category category, Principal principal) {
+    public void deleteCategory(Category category, Principal principal) {
         getCategory(category.getId(), principal);
         categoryRepository.delete(category);
     }

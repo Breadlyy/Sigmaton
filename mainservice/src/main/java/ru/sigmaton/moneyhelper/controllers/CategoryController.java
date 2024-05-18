@@ -2,7 +2,6 @@ package ru.sigmaton.moneyhelper.controllers;
 
 import org.springframework.web.bind.annotation.*;
 import ru.sigmaton.moneyhelper.model.Category;
-import ru.sigmaton.moneyhelper.services.BudgetService;
 import ru.sigmaton.moneyhelper.services.CategoryService;
 
 import java.security.Principal;
@@ -15,7 +14,7 @@ public class CategoryController {
 
     private final CategoryService categoryService;
 
-    public CategoryController(CategoryService categoryService, BudgetService budgetService) {
+    public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
 
@@ -44,9 +43,9 @@ public class CategoryController {
     }
 
     @DeleteMapping
-    public Category deleteCategory(@RequestBody Category category, Principal principal)
+    public void deleteCategory(@RequestBody Category category, Principal principal)
     {
-        return categoryService.deleteCategory(category, principal);
+        categoryService.deleteCategory(category, principal);
     }
 
 }
