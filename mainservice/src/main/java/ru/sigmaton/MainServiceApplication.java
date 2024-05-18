@@ -1,14 +1,14 @@
-package ru.sigmaton.notification.moneyhelper;
+package ru.sigmaton;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import ru.sigmaton.moneyhelper.model.Account;
-import ru.sigmaton.moneyhelper.repository.AccountRepository;
 
 
-@SpringBootApplication
+@SpringBootApplication(
+        scanBasePackages = "ru.sigmaton"
+)
 public class MainServiceApplication {
 
     public static void main(String[] args) {
@@ -16,7 +16,7 @@ public class MainServiceApplication {
     }
 
     @Bean
-    CommandLineRunner commandLineRunner(AccountRepository accountRepository) {
+    CommandLineRunner commandLineRunner() {
         return args -> {
 
         };

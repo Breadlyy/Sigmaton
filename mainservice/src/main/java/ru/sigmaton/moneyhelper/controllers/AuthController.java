@@ -1,6 +1,7 @@
 package ru.sigmaton.moneyhelper.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,7 +23,11 @@ public class AuthController {
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody RegisterRequest request
             ){
-        return ResponseEntity.ok(authService.register(request));
+
+        AuthenticationResponse response = authService.register(request);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.AUTHORIZATION, response.getToken())
+                .build();
     }
 
     @PostMapping("/authenticate")

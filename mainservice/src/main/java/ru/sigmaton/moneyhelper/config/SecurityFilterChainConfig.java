@@ -16,6 +16,7 @@ import ru.sigmaton.moneyhelper.jwtService.JwtFilter;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityFilterChainConfig {
+
     private final JwtFilter jwtFilter;
     private final AuthenticationProvider authenticationProvider;
 
