@@ -1,18 +1,12 @@
 package ru.sigmaton.moneyhelper.services;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.data.crossstore.ChangeSetPersister;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import ru.sigmaton.moneyhelper.exception.CategoryNotFoundException;
-import ru.sigmaton.moneyhelper.exception.NotFoundException;
 import ru.sigmaton.moneyhelper.model.Category;
-import ru.sigmaton.moneyhelper.model.Transaction;
 import ru.sigmaton.moneyhelper.repository.CategoryRepository;
 
 import java.security.Principal;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CategoryService {

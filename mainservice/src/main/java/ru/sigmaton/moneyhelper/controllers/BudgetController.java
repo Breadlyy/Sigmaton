@@ -23,9 +23,5 @@ public class BudgetController {
         return budgetService.getBudget(principal);
     }
 
-    @GetMapping("/new")
-    public Budget createBudget(Principal principal, @RequestParam Long amount) {
-        return budgetService.createBudget(principal, amount);
-    }
 
 }
