@@ -21,18 +21,16 @@ public class BudgetController {
     private final BudgetService budgetService;
     private final AccountDetailsService accountDetailsService;
     @PostMapping("/new")
-    public ResponseEntity<Budget> createNewBudget()
-    {
-        return ResponseEntity.ok(budgetService.saveNewBudget(new Budget()));
+    public ResponseEntity<Budget> createNewBudget(
+            @RequestBody Budget budget
+    ) {
+        return ResponseEntity.ok(budgetService.saveNewBudget(budget));
     }
-    @GetMapping("/getBudgetById")
-    public ResponseEntity<Budget> getBudgetById(@RequestParam("budgetId") Long budgetId)
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Budget> getBudgetById(@PathVariable Long id)
     {
-        return ResponseEntity.ok(budgetService.findById(budgetId));
+        return ResponseEntity.ok(budgetService.findById(id));
     }
-    @GetMapping("/test")
-    public void test(@RequestParam("text")String text)
-    {
-        System.out.println(text);
-    }
+
 }
