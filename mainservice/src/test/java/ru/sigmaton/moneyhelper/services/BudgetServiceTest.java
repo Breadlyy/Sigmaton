@@ -8,6 +8,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import ru.sigmaton.moneyhelper.model.Account;
 import ru.sigmaton.moneyhelper.model.Budget;
 import ru.sigmaton.moneyhelper.repository.AccountRepository;
+import ru.sigmaton.moneyhelper.repository.BudgetRepository;
 
 import java.security.Principal;
 import java.util.Collections;
@@ -17,19 +18,22 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+
 @ExtendWith(MockitoExtension.class)
 class BudgetServiceTest {
 
     private BudgetService underTest;
     @Mock
     private AccountRepository accountRepository;
+    @Mock
+    private BudgetRepository budgetRepository;
 
     private AccountDetailsService accountDetailsService;
 
     @BeforeEach
     void setUp() {
         accountDetailsService = new AccountDetailsService(accountRepository);
-        underTest = new BudgetService(accountDetailsService);
+        underTest = new BudgetService(accountDetailsService, budgetRepository);
     }
 
     @Test
