@@ -1,48 +1,39 @@
 package ru.sigmaton.moneyhelper.services;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.sigmaton.moneyhelper.exception.BudgetNotFoundException;
+import ru.sigmaton.moneyhelper.exception.BudgetNotExists;
 import ru.sigmaton.moneyhelper.model.Budget;
-import ru.sigmaton.moneyhelper.model.BudgetRequest;
-import ru.sigmaton.moneyhelper.model.Category;
 import ru.sigmaton.moneyhelper.repository.BudgetRepository;
 
-import java.util.List;
+import java.security.Principal;
 
 @Service
-@RequiredArgsConstructor
 public class BudgetService {
 
-    private final AccountDetailsService accountDetailsService;
+    private final AccountDetailsService accountService;
+
     private final BudgetRepository budgetRepository;
 
-    public Budget create(Budget budget, String username) {
+    public BudgetService(AccountDetailsService accountService, BudgetRepository budgetRepository) {
+        this.accountService = accountService;
+        this.budgetRepository = budgetRepository;
+    }
+
+    public Budget getBudget(Principal principal) {
+        var account = accountService.findByLogin(principal.getName());
+        var budget = account.getBudget();
+        if (budget == null)
+            throw new BudgetNotExists();
+        return budget;
+    }
+
+    public Budget createBudget(Principal principal, Long amount) {
+        var account = accountService.findByLogin(principal.getName());
+        var budget = Budget.builder()
+            .account(account)
+            .amount(amount)
+            .build();
         return budgetRepository.save(budget);
-    }
-
-    public Budget findById(Long budgetId, String username) {
-        var budget = budgetRepository.findById(budgetId);
-        if (budget.isPresent())
-            return budget.get();
-        throw new BudgetNotFoundException(budgetId);
-    }
-
-    public List<Budget> findAll(String login) {
-        return budgetRepository.findAllByAccount_Login(login);
-    }
-
-    public void deleteById(Long budgetId) {
-        var budget = findById(budgetId);
-        budgetRepository.delete(budget);
-    }
-
-    public Budget update(Budget budget) {
-        var id = budget.getId();
-        if (budgetRepository.existsById(id))
-            return budgetRepository.save(budget);
-        throw new BudgetNotFoundException(id);
     }
 
 }

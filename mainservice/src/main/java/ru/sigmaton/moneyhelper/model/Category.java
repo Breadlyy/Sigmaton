@@ -1,9 +1,7 @@
 package ru.sigmaton.moneyhelper.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import ru.sigmaton.moneyhelper.model.enums.Type;
 
 import java.util.ArrayList;
@@ -12,6 +10,8 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "category")
 public class Category {
@@ -25,10 +25,6 @@ public class Category {
     @Enumerated(EnumType.ORDINAL)
     private Type type;
 
-    private Long plan;
-
-    private Long real;
-
     @ManyToOne
     @JoinColumn(name = "budget_id")
     private Budget budget;
@@ -38,11 +34,5 @@ public class Category {
             mappedBy = "category",
             orphanRemoval = true)
     private List<Transaction> transactions = new ArrayList<>();
-
-    public Category(String name, Type type, Long plan) {
-        this.name = name;
-        this.type = type;
-        this.plan = plan;
-    }
 
 }

@@ -23,7 +23,6 @@ public class AuthService {
     public AuthenticationResponse register(RegisterRequest request) {
         var account = Account.builder()
                 .login(request.getLogin())
-                .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .build();
 

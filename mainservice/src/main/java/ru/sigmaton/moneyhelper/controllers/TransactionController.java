@@ -13,11 +13,12 @@ import ru.sigmaton.moneyhelper.services.TransactionService;
 @RequiredArgsConstructor
 public class TransactionController {
 
-    private final TransactionService transactionService;
+//    private final TransactionService transactionService;
+//
+//    @PostMapping("/new")
+//    public void createNewTransaction(@RequestBody Transaction transaction)
+//    {
+//        transactionService.saveNewTransaction(transaction);
+//    }
 
-    @PostMapping("/new")
-    public void createNewTransaction(@RequestBody Transaction transaction)
-    {
-        transactionService.saveNewTransaction(transaction);
-    }
 }

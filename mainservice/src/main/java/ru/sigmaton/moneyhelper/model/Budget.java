@@ -1,12 +1,8 @@
 package ru.sigmaton.moneyhelper.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +10,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "budget")
 public class Budget {
@@ -22,15 +19,9 @@ public class Budget {
     @GeneratedValue
     private Long id;
 
-    private String name;
-
-    private LocalDate startDate;
-
-    private LocalDate endDate;
-
     private Long amount;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "account_id")
     private Account account;
 
@@ -39,4 +30,5 @@ public class Budget {
             mappedBy = "budget",
             cascade = CascadeType.ALL)
     private List<Category> categories = new ArrayList<>();
+
 }

@@ -1,9 +1,7 @@
 package ru.sigmaton.moneyhelper.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -11,6 +9,8 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "transaction")
 public class Transaction {
@@ -29,9 +29,4 @@ public class Transaction {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    public Transaction(String name, LocalDateTime timestamp, BigDecimal amount) {
-        this.name = name;
-        this.timestamp = timestamp;
-        this.amount = amount;
-    }
 }

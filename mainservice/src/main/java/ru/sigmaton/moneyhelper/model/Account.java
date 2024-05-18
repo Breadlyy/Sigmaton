@@ -5,9 +5,7 @@ import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 @Getter
 @Setter
@@ -26,15 +24,9 @@ public class Account implements UserDetails {
 
     private String password;
 
-    private String email;
-
-
-
-    @OneToMany(
-            fetch = FetchType.EAGER,
-            mappedBy = "account",
-            orphanRemoval = true)
-    private List<Budget> budgets = new ArrayList<>();
+    @OneToOne
+    @JoinColumn(name = "budget_id")
+    private Budget budget;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -65,16 +57,5 @@ public class Account implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-    public void addBudget(Budget budget)
-    {
-    budgets.add(budget);
-    }
-    public void removeBudget(Budget budget)
-    {
-        if (budgets.contains(budget))
-        {
-            budgets.remove(budget);
-        }
-        else System.out.println("Budget bot found");
-    }
+
 }
