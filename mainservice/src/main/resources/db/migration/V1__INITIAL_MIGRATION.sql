@@ -8,10 +8,9 @@ CREATE SEQUENCE IF NOT EXISTS transaction_seq START WITH 1 INCREMENT BY 50;
 
 CREATE TABLE account
 (
-    id        BIGINT NOT NULL,
-    login     VARCHAR(255),
-    password  VARCHAR(255),
-    budget_id BIGINT,
+    id       BIGINT NOT NULL,
+    login    VARCHAR(255),
+    password VARCHAR(255),
     CONSTRAINT pk_account PRIMARY KEY (id)
 );
 
@@ -37,19 +36,13 @@ CREATE TABLE transaction
     id          BIGINT NOT NULL,
     name        VARCHAR(255),
     timestamp   TIMESTAMP WITHOUT TIME ZONE,
-    amount      DECIMAL,
+    amount      BIGINT,
     category_id BIGINT,
     CONSTRAINT pk_transaction PRIMARY KEY (id)
 );
 
-ALTER TABLE account
-    ADD CONSTRAINT uc_account_budget UNIQUE (budget_id);
-
 ALTER TABLE budget
     ADD CONSTRAINT uc_budget_account UNIQUE (account_id);
-
-ALTER TABLE account
-    ADD CONSTRAINT FK_ACCOUNT_ON_BUDGET FOREIGN KEY (budget_id) REFERENCES budget (id);
 
 ALTER TABLE budget
     ADD CONSTRAINT FK_BUDGET_ON_ACCOUNT FOREIGN KEY (account_id) REFERENCES account (id);

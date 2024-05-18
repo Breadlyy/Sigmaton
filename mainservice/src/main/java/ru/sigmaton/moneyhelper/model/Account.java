@@ -24,8 +24,7 @@ public class Account implements UserDetails {
 
     private String password;
 
-    @OneToOne
-    @JoinColumn(name = "budget_id")
+    @OneToOne(mappedBy="account", orphanRemoval = true)
     private Budget budget;
 
     @Override

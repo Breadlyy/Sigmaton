@@ -23,7 +23,7 @@ public class Transaction {
 
     private LocalDateTime timestamp;
 
-    private BigDecimal amount;
+    private Long amount;
 
     @ManyToOne
     @JoinColumn(name = "category_id")

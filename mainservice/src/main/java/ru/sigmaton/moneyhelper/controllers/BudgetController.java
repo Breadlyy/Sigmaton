@@ -1,9 +1,11 @@
 package ru.sigmaton.moneyhelper.controllers;
 
+import org.springframework.format.annotation.NumberFormat;
 import org.springframework.web.bind.annotation.*;
 import ru.sigmaton.moneyhelper.model.Budget;
 import ru.sigmaton.moneyhelper.services.BudgetService;
 
+import java.math.BigDecimal;
 import java.security.Principal;
 
 @RestController
@@ -21,9 +23,5 @@ public class BudgetController {
         return budgetService.getBudget(principal);
     }
 
-    @GetMapping("/new")
-    public Budget createBudget(Principal principal, @RequestParam Long amount) {
-        return budgetService.createBudget(principal, amount);
-    }
 
 }
