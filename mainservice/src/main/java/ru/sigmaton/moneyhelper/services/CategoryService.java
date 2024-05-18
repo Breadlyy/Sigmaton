@@ -27,4 +27,5 @@ public class CategoryService {
         if(category.isEmpty())
             throw new NotFoundException("Transaction: " + transaction.getId() + " not found");
     }
+
 }

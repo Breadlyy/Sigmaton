@@ -19,7 +19,7 @@ import ru.sigmaton.moneyhelper.services.BudgetService;
 public class BudgetController {
 
     private final BudgetService budgetService;
-    private final AccountDetailsService accountDetailsService;
+
     @PostMapping("/new")
     public ResponseEntity<Budget> newBudget(
             @RequestBody Budget budget
