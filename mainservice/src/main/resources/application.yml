@@ -8,14 +8,12 @@ spring:
     password: password
     url: jdbc:postgresql://localhost:5432/accounts
   jpa:
-      hibernate:
-        ddl-auto: create
+    hibernate:
+      ddl-auto: validate
       properties:
         hibernate:
           dialect: org.hibernate.dialect.PostgreSQLDialect
-          format_sql: true
-      show-sql: true
   flyway:
-    enabled: false
+    enabled: true
 server:
   port: 8081
