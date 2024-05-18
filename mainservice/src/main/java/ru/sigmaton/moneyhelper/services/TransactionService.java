@@ -2,6 +2,7 @@ package ru.sigmaton.moneyhelper.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.sigmaton.moneyhelper.model.Transaction;
 import ru.sigmaton.moneyhelper.repository.TransactionRepository;
 
 @Service
@@ -9,4 +10,10 @@ import ru.sigmaton.moneyhelper.repository.TransactionRepository;
 public class TransactionService {
 
     private final TransactionRepository transactionRepository;
+    private final CategoryService categoryService;
+    private final BudgetService budgetService;
+
+    public void saveNewTransaction(Transaction transaction) {
+        categoryService.processTransaction(transaction);
+    }
 }

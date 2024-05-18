@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import ru.sigmaton.moneyhelper.model.Account;
 import ru.sigmaton.moneyhelper.repository.AccountRepository;
 
 @Service
@@ -20,4 +21,10 @@ public class AccountDetailsService implements UserDetailsService {
                 ));
     }
 
+    public Account findByLogin(String username) {
+        return accountRepository.findByLogin(username).orElseThrow(
+                () -> new UsernameNotFoundException(
+                        "User: " + username + " not found"
+                ));
+    }
 }

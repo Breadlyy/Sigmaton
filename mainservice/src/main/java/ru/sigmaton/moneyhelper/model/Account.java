@@ -65,4 +65,16 @@ public class Account implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+    public void addBudget(Budget budget)
+    {
+    budgets.add(budget);
+    }
+    public void removeBudget(Budget budget)
+    {
+        if (budgets.contains(budget))
+        {
+            budgets.remove(budget);
+        }
+        else System.out.println("Budget bot found");
+    }
 }
