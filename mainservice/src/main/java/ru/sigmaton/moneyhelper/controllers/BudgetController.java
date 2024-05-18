@@ -21,14 +21,14 @@ public class BudgetController {
     private final BudgetService budgetService;
     private final AccountDetailsService accountDetailsService;
     @PostMapping("/new")
-    public ResponseEntity<Budget> createNewBudget(
+    public ResponseEntity<Budget> newBudget(
             @RequestBody Budget budget
     ) {
-        return ResponseEntity.ok(budgetService.saveNewBudget(budget));
+        return ResponseEntity.ok(budgetService.create(budget));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Budget> getBudgetById(@PathVariable Long id)
+    public ResponseEntity<Budget> getById(@PathVariable Long id)
     {
         return ResponseEntity.ok(budgetService.findById(id));
     }

@@ -15,6 +15,7 @@ import java.util.List;
 @Entity
 @Table(name = "category")
 public class Category {
+
     @Id
     @GeneratedValue
     private Long id;
@@ -43,4 +44,5 @@ public class Category {
         this.type = type;
         this.plan = plan;
     }
+
 }
