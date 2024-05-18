@@ -4,9 +4,9 @@ spring:
     kafka:
       bootstrap-servers: localhost:9092
   datasource:
+    username: postgres
     password: password
     url: jdbc:postgresql://localhost:5432/accounts
-    username: postgres
   jpa:
       hibernate:
         ddl-auto: create-drop
