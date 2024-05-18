@@ -2,7 +2,9 @@ spring:
   application:
     name: main-service
     kafka:
-      bootstrap-servers: localhost:9092
+      consumer:
+        bootstrap-servers: localhost:9092
+        group-id: transactions_group
   datasource:
     username: postgres
     password: password
@@ -14,7 +16,7 @@ spring:
         hibernate:
           dialect: org.hibernate.dialect.PostgreSQLDialect
   flyway:
-    enabled: true
+    enabled: false
 
 server:
   port: 8081

@@ -1,23 +1,9 @@
 spring:
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: juggeryurnero276@gmail.com
-    password: ghdp rkrl lxng kine
-    sender:
-      email: juggeryurnero276@gmail.com
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
-
   application:
     name: notification
   kafka:
-    consumer:
-      bootstrap-servers: localhost:9092
-      group-id: myGroup
+    bootstrap-servers: localhost:9092
+
+
 server:
   port: 8082
