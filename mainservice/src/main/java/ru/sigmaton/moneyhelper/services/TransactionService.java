@@ -1,6 +1,5 @@
 package ru.sigmaton.moneyhelper.services;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.sigmaton.moneyhelper.exception.TransactionNotFoundException;
 import ru.sigmaton.moneyhelper.model.Transaction;
@@ -12,10 +11,12 @@ import java.util.List;
 @Service
 public class TransactionService {
 
+    private final BudgetService budgetService;
     private final CategoryService categoryService;
     private final TransactionRepository transactionRepository;
 
-    public TransactionService(CategoryService categoryService, TransactionRepository transactionRepository) {
+    public TransactionService(BudgetService budgetService, CategoryService categoryService, TransactionRepository transactionRepository) {
+        this.budgetService = budgetService;
         this.categoryService = categoryService;
         this.transactionRepository = transactionRepository;
     }
@@ -37,11 +38,14 @@ public class TransactionService {
 
     public void deleteTransaction(Long categoryId, Transaction transaction, Principal principal) {
         getTransaction(categoryId, transaction.getId(), principal);
+        budgetService.rollbackAmount(transaction, principal);
         transactionRepository.delete(transaction);
     }
 
     public Transaction createTransaction(Long categoryId, Transaction transaction, Principal principal) {
         transaction.setCategory(categoryService.getCategory(categoryId, principal));
+        budgetService.updateAmount(transaction, principal);
         return transactionRepository.save(transaction);
     }
+
 }
