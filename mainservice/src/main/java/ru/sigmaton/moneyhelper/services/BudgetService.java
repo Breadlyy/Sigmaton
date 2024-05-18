@@ -12,11 +12,11 @@ public class BudgetService {
 
     private final AccountDetailsService accountService;
 
-    private final BudgetRepository budgetRepository;
 
-    public BudgetService(AccountDetailsService accountService, BudgetRepository budgetRepository) {
+
+    public BudgetService(AccountDetailsService accountService) {
         this.accountService = accountService;
-        this.budgetRepository = budgetRepository;
+
     }
 
     public Budget getBudget(Principal principal) {
@@ -27,13 +27,6 @@ public class BudgetService {
         return budget;
     }
 
-    public Budget createBudget(Principal principal, Long amount) {
-        var account = accountService.findByLogin(principal.getName());
-        var budget = Budget.builder()
-            .account(account)
-            .amount(amount)
-            .build();
-        return budgetRepository.save(budget);
-    }
+
 
 }
