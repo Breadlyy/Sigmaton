@@ -39,12 +39,12 @@ public class AuthService {
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        request.getUsername(),
+                        request.getLogin(),
                         request.getPassword()
                 )
         );
 
-        var account = accountRepository.findByLogin(request.getUsername())
+        var account = accountRepository.findByLogin(request.getLogin())
                 .orElseThrow();
         var jwtToken = jwtService.generateToken(account);
         return AuthenticationResponse
