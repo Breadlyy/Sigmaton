@@ -1,5 +1,6 @@
 package ru.sigmaton.moneyhelper.services;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.sigmaton.moneyhelper.exception.CategoryNotFoundException;
 import ru.sigmaton.moneyhelper.model.Category;
@@ -9,15 +10,11 @@ import java.security.Principal;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class CategoryService {
 
     private final BudgetService budgetService;
     private final CategoryRepository categoryRepository;
-
-    public CategoryService(BudgetService budgetService, CategoryRepository categoryRepository) {
-        this.budgetService = budgetService;
-        this.categoryRepository = categoryRepository;
-    }
 
     public List<Category> getCategories(Principal principal) {
         return budgetService.getBudget(principal).getCategories();
@@ -25,9 +22,12 @@ public class CategoryService {
 
     public Category getCategory(Long id, Principal principal) {
         var category = getCategories(principal).stream().filter(c -> c.getId().equals(id)).findFirst();
-        if (category.isPresent())
-            return category.get();
-        throw new CategoryNotFoundException(id);
+        if (category.isEmpty()){
+            throw new CategoryNotFoundException(id);
+        }
+
+        return category.get();
+
     }
 
     public Category createCategory(Category category, Principal principal) {
