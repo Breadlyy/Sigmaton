@@ -1,15 +1,12 @@
 package ru.sigmaton.moneyhelper.controllers;
 
-import jakarta.servlet.http.HttpServletRequest;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.sigmaton.moneyhelper.model.Account;
 import ru.sigmaton.moneyhelper.model.Budget;
-import ru.sigmaton.moneyhelper.model.BudgetRequest;
-import ru.sigmaton.moneyhelper.model.Category;
 import ru.sigmaton.moneyhelper.services.AccountDetailsService;
 import ru.sigmaton.moneyhelper.services.BudgetService;
 
@@ -34,5 +31,10 @@ public class BudgetController {
     public void test(@RequestParam("text")String text)
     {
         System.out.println(text);
+    }
+    @GetMapping("/budgets")
+    public String getBudgets(Model model)
+    {
+        return "budgets";
     }
 }
