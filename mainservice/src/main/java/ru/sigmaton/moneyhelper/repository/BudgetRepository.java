@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface BudgetRepository extends JpaRepository<Budget, Long> {
 
-    List<Budget> findAllByAccount_Id(Long id);
+    List<Budget> findAllByAccount_Login(String login);
 
 }

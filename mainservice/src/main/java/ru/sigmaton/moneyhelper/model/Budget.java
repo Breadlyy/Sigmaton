@@ -1,6 +1,7 @@
 package ru.sigmaton.moneyhelper.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "budget")
 public class Budget {
@@ -19,6 +21,8 @@ public class Budget {
     @Id
     @GeneratedValue
     private Long id;
+
+    private String name;
 
     private LocalDate startDate;
 
@@ -35,10 +39,4 @@ public class Budget {
             mappedBy = "budget",
             cascade = CascadeType.ALL)
     private List<Category> categories = new ArrayList<>();
-
-    public Budget(LocalDate startDate, LocalDate endDate, Long amount) {
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.amount = amount;
-    }
 }

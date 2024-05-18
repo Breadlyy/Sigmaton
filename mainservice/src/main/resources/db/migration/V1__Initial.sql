@@ -18,6 +18,7 @@ CREATE TABLE account
 CREATE TABLE budget
 (
     id         BIGINT NOT NULL,
+    name       VARCHAR(255),
     start_date date,
     end_date   date,
     amount     BIGINT,

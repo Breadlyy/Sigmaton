@@ -1,5 +1,6 @@
 package ru.sigmaton.moneyhelper.services;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.sigmaton.moneyhelper.exception.BudgetNotFoundException;
@@ -11,27 +12,25 @@ import ru.sigmaton.moneyhelper.repository.BudgetRepository;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class BudgetService {
 
-    private BudgetRepository budgetRepository;
+    private final AccountDetailsService accountDetailsService;
+    private final BudgetRepository budgetRepository;
 
-    public BudgetService(BudgetRepository budgetRepository, CategoryService categoryService) {
-        this.budgetRepository = budgetRepository;
-    }
-
-    public Budget create(Budget budget) {
+    public Budget create(Budget budget, String username) {
         return budgetRepository.save(budget);
     }
 
-    public Budget findById(Long budgetId) {
+    public Budget findById(Long budgetId, String username) {
         var budget = budgetRepository.findById(budgetId);
         if (budget.isPresent())
             return budget.get();
         throw new BudgetNotFoundException(budgetId);
     }
 
-    public List<Budget> findAll(Long userId) {
-        return budgetRepository.findAllByAccount_Id(userId);
+    public List<Budget> findAll(String login) {
+        return budgetRepository.findAllByAccount_Login(login);
     }
 
     public void deleteById(Long budgetId) {
