@@ -1,6 +1,7 @@
 package ru.sigmaton.moneyhelper.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.sigmaton.moneyhelper.services.AccountDetailsService;
@@ -11,4 +12,10 @@ import ru.sigmaton.moneyhelper.services.AccountDetailsService;
 public class AccountController {
 
     private final AccountDetailsService accountDetailsService;
+
+    @GetMapping("/ping")
+    public String ping() {
+        return "pong";
+    }
+
 }
