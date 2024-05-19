@@ -19,7 +19,7 @@ public class KafkaProducer {
         List<String> transaction = List.of(transactionDTO.getName().toString(),
                 transactionDTO.getTimestamp().toString(),
                 transactionDTO.getAmount().toString(),
-                transactionDTO.getCategoryName().toString());
+                transactionDTO.getCategoryName());
         kafkaTemplate.send(topic, transaction);
 
     }
