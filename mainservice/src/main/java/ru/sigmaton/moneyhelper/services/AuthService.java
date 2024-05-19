@@ -9,6 +9,7 @@ import ru.sigmaton.moneyhelper.jwtService.JwtService;
 import ru.sigmaton.moneyhelper.model.Account;
 import ru.sigmaton.moneyhelper.model.Budget;
 import ru.sigmaton.moneyhelper.repository.AccountRepository;
+import ru.sigmaton.moneyhelper.repository.BudgetRepository;
 import ru.sigmaton.moneyhelper.securityUtils.AuthenticationRequest;
 import ru.sigmaton.moneyhelper.securityUtils.AuthenticationResponse;
 import ru.sigmaton.moneyhelper.utils.RegisterRequest;
@@ -23,20 +24,24 @@ public class AuthService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
     private final AccountRepository accountRepository;
+    private final BudgetRepository budgetRepository;
+
     public AuthenticationResponse register(RegisterRequest request) {
         var account = Account.builder()
                 .login(request.getLogin())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .build();
 
+        var savedAccount = accountRepository.save(account);
+
         Budget budget = Budget.builder()
                 .amount(0L)
-                .account(account)
-                .categories(Collections.emptyList()).build();
+                .account(savedAccount)
+                .categories(Collections.emptyList())
+                .build();
 
-        account.setBudget(budget);
+        budgetRepository.save(budget);
 
-        accountRepository.save(account);
         var jwtToken = jwtService.generateToken(account);
         return AuthenticationResponse
                 .builder()

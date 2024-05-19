@@ -26,7 +26,7 @@ public class TransactionController {
         return transactionService.getTransactions(categoryId, principal);
     }
 
-    @GetMapping("/transactionId")
+    @GetMapping("/{transactionId}")
     public Transaction getTransaction (
             @PathVariable Long categoryId,
             @PathVariable Long transactionId,

@@ -1,5 +1,6 @@
 package ru.sigmaton.moneyhelper.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,6 +27,7 @@ public class Budget {
     @JoinColumn(name = "account_id")
     private Account account;
 
+    @JsonIgnore
     @OneToMany(
             fetch = FetchType.EAGER,
             mappedBy = "budget",

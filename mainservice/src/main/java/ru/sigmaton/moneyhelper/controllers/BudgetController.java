@@ -23,5 +23,4 @@ public class BudgetController {
         return budgetService.getBudget(principal);
     }
 
-
 }

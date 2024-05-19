@@ -18,7 +18,6 @@ public class BudgetService {
 
     public Budget getBudget(Principal principal) {
         var account = accountService.findByLogin(principal.getName());
-
         return account.getBudget();
     }
 

@@ -1,5 +1,6 @@
 package ru.sigmaton.moneyhelper.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -22,8 +23,10 @@ public class Account implements UserDetails {
 
     private String login;
 
+    @JsonIgnore
     private String password;
 
+    @JsonIgnore
     @OneToOne(mappedBy="account", orphanRemoval = true)
     private Budget budget;
 
