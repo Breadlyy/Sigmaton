@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.sigmaton.moneyhelper.model.Budget;
 import ru.sigmaton.moneyhelper.model.Transaction;
+import ru.sigmaton.moneyhelper.repository.BudgetRepository;
+
 import java.security.Principal;
 
 @Service
@@ -12,6 +14,7 @@ public class BudgetService {
 
     private final AccountDetailsService accountService;
 
+    private final BudgetRepository budgetRepository;
 
     public Budget getBudget(Principal principal) {
         var account = accountService.findByLogin(principal.getName());

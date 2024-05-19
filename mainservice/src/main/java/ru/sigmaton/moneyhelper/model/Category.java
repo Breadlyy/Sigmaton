@@ -35,4 +35,9 @@ public class Category {
             orphanRemoval = true)
     private List<Transaction> transactions = new ArrayList<>();
 
+    public void addTransaction(Transaction transaction)
+    {
+        transactions.add(transaction);
+    }
+
 }
