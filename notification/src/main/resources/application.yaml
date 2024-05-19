@@ -3,7 +3,11 @@ spring:
     name: notification
   kafka:
     bootstrap-servers: localhost:9092
-
+    key-store-location: keystore.jks
+    ssl.key-store-password: keystore_password
+    ssl.key-password: key_password
+    ssl.trust-store-location: truststore.jks
+    ssl.trust-store-password: truststore_password
 
 server:
   port: 8082

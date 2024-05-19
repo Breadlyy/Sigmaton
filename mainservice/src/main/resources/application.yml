@@ -2,6 +2,11 @@ spring:
   application:
     name: main-service
     kafka:
+      key-store-location: /keystore.jks
+      ssl.key-store-password: keystore_password
+      ssl.key-password: key_password
+      ssl.trust-store-location: /truststore.jks
+      ssl.trust-store-password: truststore_password
       consumer:
         bootstrap-servers: localhost:9092
         group-id: transactions_group
