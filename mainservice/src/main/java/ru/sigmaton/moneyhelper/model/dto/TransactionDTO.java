@@ -19,6 +19,9 @@ public class TransactionDTO {
     private LocalDateTime timestamp;
 
     private BigDecimal amount;
+
     private String categoryName;
+
+    private String accountId;
 
 }

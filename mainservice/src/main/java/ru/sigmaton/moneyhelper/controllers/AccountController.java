@@ -13,9 +13,4 @@ public class AccountController {
 
     private final AccountDetailsService accountDetailsService;
 
-    @GetMapping("/ping")
-    public String ping() {
-        return "pong";
-    }
-
 }

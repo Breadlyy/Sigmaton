@@ -16,10 +16,11 @@ public class KafkaProducer {
         this.kafkaTemplate = kafkaTemplate;
     }
     public void sendMessage(TransactionDTO transactionDTO) throws InterruptedException {
-        List<String> transaction = List.of(transactionDTO.getName().toString(),
+        List<String> transaction = List.of(transactionDTO.getName(),
                 transactionDTO.getTimestamp().toString(),
                 transactionDTO.getAmount().toString(),
-                transactionDTO.getCategoryName().toString());
+                transactionDTO.getCategoryName(),
+                transactionDTO.getAccountId());
         kafkaTemplate.send(topic, transaction);
 
     }

@@ -26,7 +26,12 @@ public class Transaction {
     private Long amount;
 
     @ManyToOne
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "category_name")
     private Category category;
 
+    public Transaction(String name, LocalDateTime timestamp, Long amount) {
+        this.name = name;
+        this.timestamp = timestamp;
+        this.amount = amount;
+    }
 }
