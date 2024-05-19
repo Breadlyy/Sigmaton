@@ -20,6 +20,7 @@ public class KafkaProducer {
                 transactionDTO.getTimestamp().toString(),
                 transactionDTO.getAmount().toString(),
                 transactionDTO.getCategoryName());
+
         kafkaTemplate.send(topic, transaction);
 
     }
